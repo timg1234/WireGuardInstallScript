@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# WireGuardMin installation script
+# Enhanced WireGuardMin installation script
 
 # Uninstall any previous WireGuard installation
 echo "Uninstalling any previous WireGuard installation..."
@@ -13,10 +13,9 @@ echo "Updating package list and installing necessary packages..."
 sudo apt update && sudo apt upgrade -y
 sudo apt install wireguard wireguard-tools qrencode resolvconf curl -y
 
-# Check for existing DuckDNS setup
+# Check if DuckDNS setup is required
 DUCKDNS_DOMAIN=""
 DUCKDNS_TOKEN=""
-
 if [ ! -f /home/pi/duckdns/duck.log ]; then
     echo "Setting up DuckDNS for Dynamic DNS..."
 
@@ -26,7 +25,7 @@ if [ ! -f /home/pi/duckdns/duck.log ]; then
     # Prompt user for DuckDNS information
     echo "Please enter your desired DuckDNS domain (subdomain of duckdns.org):"
     read DUCKDNS_DOMAIN
-    echo "Please visit https://www.duckdns.org/ to create an account and get your token."
+    echo "Visit https://www.duckdns.org/ to create an account and obtain your token."
     echo "Enter your DuckDNS token:"
     read DUCKDNS_TOKEN
 
